@@ -34,7 +34,7 @@
 <body>
     <div class="container">
         <h1>ADICIONAR MÚSICA</h1>
-        <form method="POST" action="/" class="text-center mb-4">
+        <form method="POST" action="/" class="text-center mb-4"> <!-- Ação deve corresponder à rota no Flask -->
             <div class="form-group">
                 <label for="title">Título da Música</label>
                 <input type="text" id="title" name="title" class="form-control d-inline-block" style="width: 300px;" placeholder="Título da Música" required>
@@ -51,16 +51,16 @@
                 </tr>
             </thead>
             <tbody>
-                {% for musica in musicas %}
+                {% for musica in musicas %}  <!-- Verifique se 'musicas' está sendo passado do Flask -->
                     <tr>
                         <td>{{ musica.title }}</td>
                         <td>
-                            <form method="POST" action="/update" class="d-inline">
+                            <form method="POST" action="/update" class="d-inline"> <!-- Ação deve corresponder à rota no Flask -->
                                 <input type="hidden" name="oldtitle" value="{{ musica.title }}">
                                 <input type="text" name="newtitle" value="{{ musica.title }}" class="form-control d-inline" style="width: 150px;" required>
                                 <button type="submit" class="btn btn-custom">Atualizar</button>
                             </form>
-                            <form method="POST" action="/delete" class="d-inline">
+                            <form method="POST" action="/delete" class="d-inline"> <!-- Ação deve corresponder à rota no Flask -->
                                 <input type="hidden" name="title" value="{{ musica.title }}">
                                 <button type="submit" class="btn btn-danger">Deletar</button>
                             </form>
