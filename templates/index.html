@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de Séries</title>
+    <title>Gerenciador de Músicas</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -33,15 +33,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>ADICIONAR SÉRIE</h1>
+        <h1>ADICIONAR MÚSICA</h1>
         <form method="POST" action="/" class="text-center mb-4">
             <div class="form-group">
-                <input type="text" name="title" class="form-control d-inline-block" style="width: 300px;" placeholder="Título da Série" required>
-                <input type="submit" value="Adicionar" class="btn btn-custom">
+                <label for="title">Título da Música</label>
+                <input type="text" id="title" name="title" class="form-control d-inline-block" style="width: 300px;" placeholder="Título da Música" required>
+                <button type="submit" class="btn btn-custom">Adicionar</button>
             </div>
         </form>
 
-        <h1>Séries</h1>
+        <h1>Músicas</h1>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -50,18 +51,18 @@
                 </tr>
             </thead>
             <tbody>
-                {% for serie in serie %}
+                {% for musica in musicas %}
                     <tr>
-                        <td>{{ serie.title }}</td>
+                        <td>{{ musica.title }}</td>
                         <td>
                             <form method="POST" action="/update" class="d-inline">
-                                <input type="hidden" name="oldtitle" value="{{ serie.title }}">
-                                <input type="text" name="newtitle" value="{{ serie.title }}" class="form-control d-inline" style="width: 150px;" required>
-                                <input type="submit" value="Atualizar" class="btn btn-custom">
+                                <input type="hidden" name="oldtitle" value="{{ musica.title }}">
+                                <input type="text" name="newtitle" value="{{ musica.title }}" class="form-control d-inline" style="width: 150px;" required>
+                                <button type="submit" class="btn btn-custom">Atualizar</button>
                             </form>
                             <form method="POST" action="/delete" class="d-inline">
-                                <input type="hidden" name="title" value="{{ serie.title }}">
-                                <input type="submit" value="Deletar" class="btn btn-danger">
+                                <input type="hidden" name="title" value="{{ musica.title }}">
+                                <button type="submit" class="btn btn-danger">Deletar</button>
                             </form>
                         </td>
                     </tr>
