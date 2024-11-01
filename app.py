@@ -25,7 +25,7 @@ def home():
     series = Serie.query.all()
     return render_template("index.html", series=series)
 
-@app.route('index', methods=["GET", "POST"])
+@app.route('/index', methods=["GET", "POST"])
 def add():
     if request.method == "POST":
         title = request.form.get("title")
